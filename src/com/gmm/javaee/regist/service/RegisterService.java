@@ -13,7 +13,7 @@ public class RegisterService {
      */
         private UserDao dao = new UserDao();
         private int i=0;
-
+        private User user1 = null;
         public int register(User user){
             try {
                 i = dao.insertUser(user);
@@ -21,6 +21,15 @@ public class RegisterService {
                 e.printStackTrace();
             }
             return i;
+        }
+        public User login(String name, String pwd)  {
+            try {
+                user1 = dao.selectOne(name,pwd);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return user1;
+
         }
 
 }

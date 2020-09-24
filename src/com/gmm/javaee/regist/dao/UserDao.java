@@ -12,4 +12,11 @@ public class UserDao extends  BaseDao<User>{
         int i = this.update(sql, user.getName(),user.getPwd(),user.getAge(),user.getSex());
         return i;
     }
+    //用户登录
+    public User selectOne(String name, String pwd) throws SQLException {
+        String sql = "select * from user where name=? and pwd =?";
+        User user1 = this.getBean(User.class, sql, name, pwd);
+        return user1;
+
+    }
 }
